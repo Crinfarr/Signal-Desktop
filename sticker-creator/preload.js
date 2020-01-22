@@ -41,7 +41,7 @@ const WebAPI = initializeWebAPI({
 
 window.convertToWebp = async (path, width = 512, height = 512) => {
   const imgBuffer = await pify(readFile)(path);
-  const sharpImg = sharp(imgBuffer);
+  const sharpImg = await sharp(imgBuffer);
   const meta = await sharpImg.metadata();
 
   const buffer = await sharpImg
